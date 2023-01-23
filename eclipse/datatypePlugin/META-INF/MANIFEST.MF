@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Datatype Extension for Tycho reproducer
+Bundle-SymbolicName: datatypePlugin;singleton:=true
+Bundle-Version: 0.0.1.qualifier
+Import-Package: org.faktorips.datatype,
+ org.faktorips.runtime
+Automatic-Module-Name: org.faktorips.tychoReproducer.datatypePlugin.singleton.true
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Require-Bundle: org.faktorips.devtools.model;bundle-version="22.12.4"
+Bundle-ActivationPolicy: lazy

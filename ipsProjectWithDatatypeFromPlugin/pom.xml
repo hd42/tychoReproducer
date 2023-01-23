@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.faktorips.tychoReproducer</groupId>
+		<artifactId>tychoPR2012</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>ipsProjectWithDatatypeFromPlugin</artifactId>
+
+	<packaging>jar</packaging>
+
+	<properties>
+		<!-- Faktor-IPS -->
+		<faktor-ips.version>23.1.0.a20230123-02</faktor-ips.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.faktorips</groupId>
+			<artifactId>faktorips-runtime</artifactId>
+			<version>${faktor-ips.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.faktorips</groupId>
+			<artifactId>faktorips-valuetypes</artifactId>
+			<version>${faktor-ips.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<!-- This shouldn't be necessary -->
+		<!--<extensions>
+			<extension>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-build</artifactId>
+				<version>3.0.2-SNAPSHOT</version>
+			</extension>
+		</extensions>-->
+		<finalName>${project.artifactId}</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>model</directory>
+				<targetPath>model</targetPath>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.faktorips</groupId>
+				<artifactId>faktorips-validation-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>faktorips-validate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.faktorips.tychoReproducer</groupId>
+						<artifactId>datatypePlugin</artifactId>
+						<version>${project.version}</version>
+						<!--<exclusions>
+							<exclusion>
+								<groupId>org.eclipse.platform</groupId>
+								<artifactId>*</artifactId>
+							</exclusion>
+						</exclusions>-->
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<skip>false</skip>
+					<archive>
+						<manifestFile>META-INF/MANIFEST.MF</manifestFile>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.faktorips</groupId>
+					<artifactId>faktorips-validation-maven-plugin</artifactId>
+					<version>${faktor-ips.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

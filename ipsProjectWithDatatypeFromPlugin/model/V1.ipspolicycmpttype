@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PolicyCmptType xmlns="http://www.faktorzehn.org" since="0.0.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.faktorzehn.org https://doc.faktorzehn.org/schema/faktor-ips/22.12/PolicyCmptType.xsd" xml:space="preserve">
+ <ExtensionProperties>
+  <Value id="org.faktorips.testextensions.TestExtensionForIPolicyCmptType" isNull="true"/>
+ </ExtensionProperties>
+ <Label locale="de"/>
+ <Description locale="de"/>
+ <Attribute attributeType="changeable" changingOverTime="true" datatype="Country" modifier="published" name="invalidCountry" since="0.0.1">
+  <DefaultValue>Lummerland</DefaultValue>
+  <ExtensionProperties>
+   <Value id="org.faktorips.testextensions.TestExtensionForIAttribute" isNull="false"><![CDATA[false]]></Value>
+  </ExtensionProperties>
+  <Label locale="de"/>
+  <Description locale="de"/>
+  <ValueSet abstract="false">
+   <AllValues containsNull="true"/>
+  </ValueSet>
+ </Attribute>
+</PolicyCmptType>
